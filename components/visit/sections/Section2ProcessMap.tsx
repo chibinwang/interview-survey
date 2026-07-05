@@ -6,8 +6,10 @@ import { TextInput } from "@/components/ui/TextInput";
 import { AutoTextarea } from "@/components/ui/AutoTextarea";
 import { ChipSingleSelect } from "@/components/ui/ChipGroup";
 import { BooleanChips } from "@/components/ui/BooleanChips";
+import { InterviewHint } from "@/components/ui/InterviewHint";
 import { AI_OPPORTUNITY, stageLabel } from "@/lib/enums";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { INTERVIEW_SIGNALS } from "@/lib/interviewSignals";
 import type { ProcessMapStage } from "@/lib/types";
 
 export function Section2ProcessMap() {
@@ -22,6 +24,7 @@ export function Section2ProcessMap() {
   return (
     <div className="space-y-3">
       <p className="text-sm text-gray-500">{t("section.processMapHint")}</p>
+      <InterviewHint signal={INTERVIEW_SIGNALS.processMap} />
 
       {visit.process_map.map((stage, i) => (
         <div key={stage.stage} className="space-y-2.5 rounded-2xl bg-white p-3 shadow-sm">

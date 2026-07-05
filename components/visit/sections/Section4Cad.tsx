@@ -6,8 +6,10 @@ import { AutoTextarea } from "@/components/ui/AutoTextarea";
 import { RatingCircles } from "@/components/ui/RatingCircles";
 import { ChipMultiSelect, ChipSingleSelect } from "@/components/ui/ChipGroup";
 import { BooleanChips } from "@/components/ui/BooleanChips";
+import { InterviewHint } from "@/components/ui/InterviewHint";
 import { CAD_BOTTLENECK_TAGS, CAD_PAYMENT_WILLINGNESS } from "@/lib/enums";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { INTERVIEW_SIGNALS } from "@/lib/interviewSignals";
 
 export function Section4Cad() {
   const { visit, updateField, saveNow } = useVisit();
@@ -15,6 +17,8 @@ export function Section4Cad() {
 
   return (
     <div className="space-y-3">
+      <InterviewHint signal={INTERVIEW_SIGNALS.cad} />
+
       <Field label={t("field.cadBottleneck")}>
         <ChipMultiSelect
           options={CAD_BOTTLENECK_TAGS}

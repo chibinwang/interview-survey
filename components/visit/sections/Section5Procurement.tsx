@@ -6,8 +6,10 @@ import { TextInput } from "@/components/ui/TextInput";
 import { AutoTextarea } from "@/components/ui/AutoTextarea";
 import { ChipMultiSelect } from "@/components/ui/ChipGroup";
 import { BooleanChips } from "@/components/ui/BooleanChips";
+import { InterviewHint } from "@/components/ui/InterviewHint";
 import { DOCUMENT_TIME_TAGS } from "@/lib/enums";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { INTERVIEW_SIGNALS } from "@/lib/interviewSignals";
 
 export function Section5Procurement() {
   const { visit, updateField, saveNow } = useVisit();
@@ -15,6 +17,8 @@ export function Section5Procurement() {
 
   return (
     <div className="space-y-3">
+      <InterviewHint signal={INTERVIEW_SIGNALS.procurement} />
+
       <Field label={t("field.procurementNotes")}>
         <AutoTextarea
           value={visit.procurement_notes ?? ""}

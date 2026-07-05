@@ -6,8 +6,10 @@ import { TextInput } from "@/components/ui/TextInput";
 import { AutoTextarea } from "@/components/ui/AutoTextarea";
 import { RatingCircles } from "@/components/ui/RatingCircles";
 import { ChipMultiSelect } from "@/components/ui/ChipGroup";
+import { InterviewHint } from "@/components/ui/InterviewHint";
 import { SCHEDULER_DISRUPTION_TAGS } from "@/lib/enums";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { INTERVIEW_SIGNALS } from "@/lib/interviewSignals";
 
 export function Section3Scheduler() {
   const { visit, updateField, saveNow } = useVisit();
@@ -15,6 +17,8 @@ export function Section3Scheduler() {
 
   return (
     <div className="space-y-3">
+      <InterviewHint signal={INTERVIEW_SIGNALS.scheduler} />
+
       <Field label={t("field.schedulerNotes")}>
         <AutoTextarea
           value={visit.scheduler_notes ?? ""}

@@ -55,6 +55,10 @@ export const dict = {
   "dashboard.unnamed": { zh: "未命名紀錄", en: "Untitled" },
   "dashboard.noDate": { zh: "尚未填寫日期", en: "No date yet" },
   "dashboard.followupDate": { zh: "追蹤日：", en: "Follow-up: " },
+  "dashboard.confirmDelete": {
+    zh: "確定要刪除這筆拜訪紀錄嗎？此動作無法復原。",
+    en: "Delete this visit record? This cannot be undone.",
+  },
 
   // ---- not-found / error ----
   "notFound.title": { zh: "找不到這筆資料", en: "This record could not be found" },

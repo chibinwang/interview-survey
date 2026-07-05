@@ -6,8 +6,10 @@ import { TextInput } from "@/components/ui/TextInput";
 import { RatingCircles } from "@/components/ui/RatingCircles";
 import { ChipMultiSelect } from "@/components/ui/ChipGroup";
 import { BooleanChips } from "@/components/ui/BooleanChips";
+import { InterviewHint } from "@/components/ui/InterviewHint";
 import { CONCERNS } from "@/lib/enums";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
+import { INTERVIEW_SIGNALS } from "@/lib/interviewSignals";
 
 export function Section6AiReadiness() {
   const { visit, updateField, saveNow } = useVisit();
@@ -15,6 +17,8 @@ export function Section6AiReadiness() {
 
   return (
     <div className="space-y-3">
+      <InterviewHint signal={INTERVIEW_SIGNALS.aiReadiness} />
+
       <Field label={t("field.decisionMaker")}>
         <TextInput
           value={visit.decision_maker ?? ""}

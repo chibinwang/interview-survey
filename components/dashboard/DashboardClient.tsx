@@ -5,6 +5,8 @@ import { useMemo, useState } from "react";
 import { LEAD_STATUS, ICP_TIERS, INDUSTRY_TYPE, VISIT_TYPES, icpTier, tierLabel, labelsOf, labelOf, optionLabel } from "@/lib/enums";
 import { LeadStatusBadge } from "@/components/badges/LeadStatusBadge";
 import { ScoreBadge } from "@/components/badges/ScoreBadge";
+import { SwipeableRow } from "@/components/dashboard/SwipeableRow";
+import { createClient } from "@/lib/supabase/client";
 import { useLocale } from "@/lib/i18n/LocaleProvider";
 
 export type DashboardVisit = {
@@ -20,8 +22,10 @@ export type DashboardVisit = {
 
 type SortKey = "score_desc" | "score_asc" | "date_desc" | "date_asc";
 
-export function DashboardClient({ visits }: { visits: DashboardVisit[] }) {
+export function DashboardClient({ visits: initialVisits }: { visits: DashboardVisit[] }) {
   const { locale, t } = useLocale();
+  const supabase = createClient();
+  const [visits, setVisits] = useState(initialVisits);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [tierFilter, setTierFilter] = useState<number | null>(null);
@@ -61,6 +65,12 @@ export function DashboardClient({ visits }: { visits: DashboardVisit[] }) {
 
     return sorted;
   }, [visits, search, typeFilter, statusFilter, tierFilter, sort]);
+
+  async function handleDelete(id: string) {
+    if (!window.confirm(t("dashboard.confirmDelete"))) return;
+    const { error } = await supabase.from("visits").delete().eq("id", id);
+    if (!error) setVisits((prev) => prev.filter((v) => v.id !== id));
+  }
 
   return (
     <div className="space-y-3">
@@ -133,40 +143,42 @@ export function DashboardClient({ visits }: { visits: DashboardVisit[] }) {
         <ul className="space-y-2">
           {filtered.map((v) => (
             <li key={v.id}>
-              <Link
-                href={`/visits/${v.id}`}
-                className="block rounded-2xl bg-white p-3 shadow-sm transition-colors active:bg-gray-50"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="truncate font-semibold text-gray-900">
-                      {v.company_name || t("dashboard.unnamed")}
-                    </p>
-                    <p className="mt-0.5 text-xs text-gray-400">
-                      {v.visit_date ?? t("dashboard.noDate")}
-                      {v.visit_type === "potential_client" &&
-                        v.industry_type.length > 0 &&
-                        ` ・ ${labelsOf(INDUSTRY_TYPE, v.industry_type, locale)}`}
-                    </p>
+              <SwipeableRow onDelete={() => handleDelete(v.id)} deleteLabel={t("common.delete")}>
+                <Link
+                  href={`/visits/${v.id}`}
+                  className="block rounded-2xl bg-white p-3 shadow-sm transition-colors active:bg-gray-50"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="truncate font-semibold text-gray-900">
+                        {v.company_name || t("dashboard.unnamed")}
+                      </p>
+                      <p className="mt-0.5 text-xs text-gray-400">
+                        {v.visit_date ?? t("dashboard.noDate")}
+                        {v.visit_type === "potential_client" &&
+                          v.industry_type.length > 0 &&
+                          ` ・ ${labelsOf(INDUSTRY_TYPE, v.industry_type, locale)}`}
+                      </p>
+                    </div>
+                    {v.visit_type === "potential_client" && <ScoreBadge score={v.score_total} showLabel={false} />}
                   </div>
-                  {v.visit_type === "potential_client" && <ScoreBadge score={v.score_total} showLabel={false} />}
-                </div>
-                <div className="mt-2 flex items-center justify-between gap-2">
-                  {v.visit_type === "potential_client" ? (
-                    <LeadStatusBadge status={v.lead_status} />
-                  ) : (
-                    <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
-                      {labelOf(VISIT_TYPES, v.visit_type, locale)}
-                    </span>
-                  )}
-                  {v.followup_date && (
-                    <span className="text-xs text-gray-400">
-                      {t("dashboard.followupDate")}
-                      {v.followup_date}
-                    </span>
-                  )}
-                </div>
-              </Link>
+                  <div className="mt-2 flex items-center justify-between gap-2">
+                    {v.visit_type === "potential_client" ? (
+                      <LeadStatusBadge status={v.lead_status} />
+                    ) : (
+                      <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                        {labelOf(VISIT_TYPES, v.visit_type, locale)}
+                      </span>
+                    )}
+                    {v.followup_date && (
+                      <span className="text-xs text-gray-400">
+                        {t("dashboard.followupDate")}
+                        {v.followup_date}
+                      </span>
+                    )}
+                  </div>
+                </Link>
+              </SwipeableRow>
             </li>
           ))}
         </ul>
