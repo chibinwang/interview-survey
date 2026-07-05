@@ -76,7 +76,13 @@ export function SwipeableRow({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onClickCapture={onClickCapture}
-        style={{ transform: `translateX(${dx}px)`, transition: dragging ? "none" : "transform 200ms ease", touchAction: "pan-y" }}
+        onDragStart={(e) => e.preventDefault()}
+        style={{
+          transform: `translateX(${dx}px)`,
+          transition: dragging ? "none" : "transform 200ms ease",
+          touchAction: "pan-y",
+          WebkitUserDrag: "none",
+        } as React.CSSProperties}
         className="relative select-none bg-white"
       >
         {children}
