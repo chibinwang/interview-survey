@@ -150,6 +150,29 @@ export const SCORE_FIELDS = [
   "score_case_study_value",
 ] as const;
 
+export interface Lead {
+  id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+
+  company_name: string;
+  industry_type: string | null;
+  address: string | null;
+  phone: string | null;
+  email: string | null;
+  product_type: string | null;
+  custom_quote_potential: boolean | null;
+  scheduling_pain_potential: boolean | null;
+  contact_status: string;
+  correct_contact: string | null;
+  next_followup_date: string | null;
+  notes: string | null;
+  script_used: string | null;
+}
+
+export type LeadUpdate = Partial<Omit<Lead, "id" | "user_id" | "created_at" | "updated_at">>;
+
 export interface Template {
   id: string;
   user_id: string;

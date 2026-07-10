@@ -24,6 +24,9 @@ export default async function DashboardPage() {
         <h1 className="text-base font-bold text-gray-900">{t("dashboard.title")}</h1>
         <div className="flex items-center gap-1">
           <LanguageToggle />
+          <Link href="/leads" className="tap-target rounded-lg px-2 py-1.5 text-sm text-gray-500 active:bg-gray-100">
+            {t("leads.title")}
+          </Link>
           <Link href="/templates" className="tap-target rounded-lg px-2 py-1.5 text-sm text-gray-500 active:bg-gray-100">
             {t("dashboard.templates")}
           </Link>

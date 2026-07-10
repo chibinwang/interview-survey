@@ -16,6 +16,9 @@ build/
 *.log
 npm-debug.log*
 
+# Claude Code working record, not part of the shipped project
+CURRENT_STATE.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

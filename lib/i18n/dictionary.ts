@@ -279,6 +279,27 @@ export const dict = {
   "field.aiToolsDetail": { zh: "使用細節", en: "Usage Details" },
   "field.customizationDescription": { zh: "客製化說明", en: "Customization Description" },
   "field.erpBrand": { zh: "ERP 品牌", en: "ERP Brand" },
+
+  // ---- leads ----
+  "leads.title": { zh: "名單", en: "Leads" },
+  "leads.new": { zh: "＋ 新增名單", en: "＋ New Lead" },
+  "leads.empty": { zh: "尚無名單", en: "No leads yet" },
+  "leads.confirmDelete": { zh: "確定要刪除這筆名單嗎？此動作無法復原。", en: "Delete this lead? This cannot be undone." },
+  "leads.noFollowup": { zh: "尚未安排跟進", en: "No follow-up scheduled" },
+  "leads.field.companyName": { zh: "公司名稱", en: "Company Name" },
+  "leads.field.industryType": { zh: "產業類型", en: "Industry Type" },
+  "leads.field.address": { zh: "地址", en: "Address" },
+  "leads.field.phone": { zh: "電話", en: "Phone" },
+  "leads.field.email": { zh: "Email", en: "Email" },
+  "leads.field.productType": { zh: "產品類型", en: "Product Type" },
+  "leads.field.customQuotePotential": { zh: "是否可能有客製報價", en: "Custom Quote Potential" },
+  "leads.field.schedulingPainPotential": { zh: "是否可能有排程痛點", en: "Scheduling Pain Potential" },
+  "leads.field.contactStatus": { zh: "聯絡狀態", en: "Contact Status" },
+  "leads.field.correctContact": { zh: "正確窗口", en: "Correct Contact" },
+  "leads.field.nextFollowupDate": { zh: "下次跟進時間", en: "Next Follow-up" },
+  "leads.field.notes": { zh: "備註", en: "Notes" },
+  "leads.field.scriptUsed": { zh: "所使用 Script", en: "Script Used" },
+  "leads.notSure": { zh: "不確定", en: "Not sure" },
 } as const satisfies Record<string, Entry>;
 
 export type DictKey = keyof typeof dict;

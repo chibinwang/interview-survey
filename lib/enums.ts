@@ -248,6 +248,15 @@ export const VISIT_TYPES: EnumOption[] = [
 // (potential_client keeps the fixed 10-tab factory template).
 export const NON_FACTORY_VISIT_TYPES = VISIT_TYPES.filter((t) => t.value !== "potential_client");
 
+export const CONTACT_STATUS: EnumOption[] = [
+  { value: "not_contacted", label_zh: "未聯絡", label_en: "Not Contacted" },
+  { value: "awaiting_reply", label_zh: "已聯絡待回覆", label_en: "Contacted, Awaiting Reply" },
+  { value: "meeting_scheduled", label_zh: "已預約會議", label_en: "Meeting Scheduled" },
+  { value: "quoted", label_zh: "已報價", label_en: "Quoted" },
+  { value: "closed_won", label_zh: "已成交", label_en: "Closed Won" },
+  { value: "not_interested", label_zh: "不考慮", label_en: "Not Interested" },
+];
+
 export const QUESTION_FIELD_TYPES: EnumOption[] = [
   { value: "text", label_zh: "單行文字", label_en: "Single-line Text" },
   { value: "textarea", label_zh: "長文字", label_en: "Long Text" },
