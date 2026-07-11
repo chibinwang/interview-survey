@@ -300,6 +300,26 @@ export const dict = {
   "leads.field.notes": { zh: "備註", en: "Notes" },
   "leads.field.scriptUsed": { zh: "所使用 Script", en: "Script Used" },
   "leads.notSure": { zh: "不確定", en: "Not sure" },
+
+  // ---- connectors ----
+  "connectors.title": { zh: "Connector CRM", en: "Connector CRM" },
+  "connectors.new": { zh: "＋ 新增 Connector", en: "＋ New Connector" },
+  "connectors.empty": { zh: "尚無 Connector", en: "No connectors yet" },
+  "connectors.confirmDelete": { zh: "確定要刪除這位 Connector 嗎？此動作無法復原。", en: "Delete this connector? This cannot be undone." },
+  "connectors.field.name": { zh: "姓名", en: "Name" },
+  "connectors.field.company": { zh: "公司", en: "Company" },
+  "connectors.field.role": { zh: "角色", en: "Role" },
+  "connectors.field.roleOtherPlaceholder": { zh: "請說明其他角色", en: "Please specify other role" },
+  "connectors.field.specialty": { zh: "專長", en: "Specialty" },
+  "connectors.field.specialtyOtherPlaceholder": { zh: "請說明其他專長", en: "Please specify other specialty" },
+  "connectors.field.factoryExposureEstimate": { zh: "接觸過多少工廠（估計即可）", en: "Estimated Factory Exposure" },
+  "connectors.field.linkedin": { zh: "LinkedIn／聯絡方式", en: "LinkedIn / Contact" },
+  "connectors.field.warmIntro": { zh: "是否有人可介紹", en: "Warm Intro" },
+  "connectors.field.interviewed": { zh: "是否已訪談", en: "Interviewed" },
+  "connectors.field.canIntroduceCustomers": { zh: "可介紹客戶", en: "Can Introduce Customers" },
+  "connectors.field.potentialAdvisor": { zh: "潛在顧問", en: "Potential Advisor" },
+  "connectors.field.notes": { zh: "備註（他最相信什麼、他反對什麼）", en: "Notes (what he believes in, what he pushes back on)" },
+  "connectors.notSure": { zh: "不確定", en: "Not sure" },
 } as const satisfies Record<string, Entry>;
 
 export type DictKey = keyof typeof dict;

@@ -257,6 +257,24 @@ export const CONTACT_STATUS: EnumOption[] = [
   { value: "not_interested", label_zh: "不考慮", label_en: "Not Interested" },
 ];
 
+export const CONNECTOR_ROLE: EnumOption[] = [
+  { value: "consultant", label_zh: "顧問", label_en: "Consultant" },
+  { value: "erp_partner", label_zh: "ERP Partner", label_en: "ERP Partner" },
+  { value: "professor", label_zh: "教授", label_en: "Professor" },
+  { value: "si", label_zh: "SI", label_en: "SI" },
+  { value: "guild", label_zh: "公會", label_en: "Guild" },
+  { value: "other", label_zh: "其他", label_en: "Other" },
+];
+
+export const CONNECTOR_SPECIALTY: EnumOption[] = [
+  { value: "erp", label_zh: "ERP", label_en: "ERP" },
+  { value: "mes", label_zh: "MES", label_en: "MES" },
+  { value: "aps", label_zh: "APS", label_en: "APS" },
+  { value: "lean", label_zh: "Lean", label_en: "Lean" },
+  { value: "cnc", label_zh: "CNC", label_en: "CNC" },
+  { value: "other", label_zh: "其他", label_en: "Other" },
+];
+
 export const QUESTION_FIELD_TYPES: EnumOption[] = [
   { value: "text", label_zh: "單行文字", label_en: "Single-line Text" },
   { value: "textarea", label_zh: "長文字", label_en: "Long Text" },

@@ -173,6 +173,29 @@ export interface Lead {
 
 export type LeadUpdate = Partial<Omit<Lead, "id" | "user_id" | "created_at" | "updated_at">>;
 
+export interface Connector {
+  id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+
+  name: string;
+  company: string | null;
+  role: string[];
+  role_other: string | null;
+  specialty: string[];
+  specialty_other: string | null;
+  factory_exposure_estimate: number | null;
+  linkedin: string | null;
+  warm_intro: boolean | null;
+  interviewed: boolean | null;
+  can_introduce_customers: number | null;
+  potential_advisor: number | null;
+  notes: string | null;
+}
+
+export type ConnectorUpdate = Partial<Omit<Connector, "id" | "user_id" | "created_at" | "updated_at">>;
+
 export interface Template {
   id: string;
   user_id: string;

@@ -27,6 +27,9 @@ export default async function DashboardPage() {
           <Link href="/leads" className="tap-target rounded-lg px-2 py-1.5 text-sm text-gray-500 active:bg-gray-100">
             {t("leads.title")}
           </Link>
+          <Link href="/connectors" className="tap-target rounded-lg px-2 py-1.5 text-sm text-gray-500 active:bg-gray-100">
+            {t("connectors.title")}
+          </Link>
           <Link href="/templates" className="tap-target rounded-lg px-2 py-1.5 text-sm text-gray-500 active:bg-gray-100">
             {t("dashboard.templates")}
           </Link>
